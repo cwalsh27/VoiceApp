@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, FileField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, InputRequired
+from flask_wtf.file import FileAllowed
+from wtforms.validators import DataRequired, Length, Email, EqualTo, InputRequired, ValidationError
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', 
@@ -27,6 +28,10 @@ class LoginForm(FlaskForm):
     
     submit = SubmitField('Log In')
 
-class UploadFileForm(FlaskForm):
-    file = FileField('File', validators=[InputRequired()])
+
+class UploadDocForm(FlaskForm):
+    file = FileField('Upload .docx file', validators=[
+        InputRequired(), 
+        FileAllowed(['docx'], 'File must be a .docx file.')
+        ])
     submit = SubmitField('Upload File')

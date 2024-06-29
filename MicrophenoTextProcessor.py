@@ -1,8 +1,10 @@
 import os
 from docx import Document
 
-desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
-doc_path = os.path.join(desktop_path, r'TextFiles/CSSPRING20230512-181729_Recording_1280x720_MM.docx')
+
+# need eliminated by flask upload function. outputFile path is next on the chopping block 
+# desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+# doc_path = os.path.join(desktop_path, r'TextFiles/CSSPRING20230512-181729_Recording_1280x720_MM.docx')
 new_doc_path = os.path.join(desktop_path, r'TextFiles/outputFile')
 
 doc = Document(doc_path)
