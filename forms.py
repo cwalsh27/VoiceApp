@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, FileField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, InputRequired
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', 
@@ -26,3 +26,7 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember Me')
     
     submit = SubmitField('Log In')
+
+class UploadFileForm(FlaskForm):
+    file = FileField('File', validators=[InputRequired()])
+    submit = SubmitField('Upload File')
