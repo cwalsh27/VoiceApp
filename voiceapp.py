@@ -22,7 +22,7 @@ def appone():
     form = UploadFileForm()
     if form.validate_on_submit():
         file = form.file.data  #retrieves the file data
-        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.filename))) #saves the files
+        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename("micropheno_input_text.txt"))) #saves the files
         return "File has been uploaded."
 
     return render_template('appone.html', form=form)
