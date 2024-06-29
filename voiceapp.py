@@ -22,7 +22,7 @@ def appone():
     form = UploadDocForm()
     if form.validate_on_submit():
         file = form.file.data  #retrieves the file data
-        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.name))) #saves the files
+        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename('micropheno_input_text.docx'))) #saves the files
         flash(f'Succesfully uploaded file named {file.name}!', 'success')
     #else: 
         #flash('Upload Unsuccessful. Please confirm that you are attempting to upload a text file of type .docx', 'danger')
