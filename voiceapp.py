@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm, UploadDocForm
 from werkzeug.utils import secure_filename
+from MicrophenoTextProcessor import check_valid_run, process_doc
 import os
 
 app = Flask(__name__)
@@ -22,8 +23,10 @@ def appone():
     form = UploadDocForm()
     if form.validate_on_submit():
         file = form.file.data  #retrieves the file data
-        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename('micropheno_input_text.docx'))) #saves the files
+        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename('micropheno_input_text.docx'))) 
         flash(f'Succesfully uploaded file named {file.name}!', 'success')
+        newFile = process_doc()
+        newFile.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename('micropheno_output_text.docx'))) 
     #else: 
         #flash('Upload Unsuccessful. Please confirm that you are attempting to upload a text file of type .docx', 'danger')
     return render_template('appone.html', form=form)
