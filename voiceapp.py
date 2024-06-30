@@ -32,7 +32,7 @@ def appone():
     elif form.is_submitted(): 
         flash('Upload Unsuccessful. Please confirm that you are attempting to upload a text file of type .docx', 'danger')
 
-    return render_template('appone.html', form=form)
+    return render_template('appone.html', form=form, title="Micropheno")
 
 @app.route('/uploads/<filename>')
 def download_file(filename):
