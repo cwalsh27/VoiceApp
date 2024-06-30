@@ -14,11 +14,11 @@ def check_valid_run(run):
         return False
     
 
-def process_doc():
+def process_doc(doc_orig):
     # need eliminated by flask upload function. outputFile path is next on the chopping block 
-    doc_path = r'static/files/micropheno_input_text.docx'
+    #doc_path = r'static/files/micropheno_input_text.docx'
 
-    doc = Document(doc_path)       #later try inputting file rather than saving it to the hard drive.... kind of a no brainer
+    doc = Document(doc_orig)       #later try inputting file rather than saving it to the hard drive.... kind of a no brainer
     newDoc = Document()
 
     # appending line labels
