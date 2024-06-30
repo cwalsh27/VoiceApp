@@ -28,15 +28,10 @@ class LoginForm(FlaskForm):
     
     submit = SubmitField('Log In')
 
-def docx_check(form, field):
-    if field.data:
-        filename = field.data.filename
-        if not filename.endswith('.docx'):
-            raise ValidationError('File must be a .docx file.')
 
 class UploadDocForm(FlaskForm):
     file = FileField('Upload .docx file', validators=[
         InputRequired(), 
-        FileAllowed(['docx'], message='File is not a doc')
+        FileAllowed(['docx'], message='File is not .docx')
         ])
     submit = SubmitField('Upload File')
