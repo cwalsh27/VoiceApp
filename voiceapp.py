@@ -29,8 +29,9 @@ def appone():
         newFile = process_doc(file)
         #newFile.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename('micropheno_output_text.docx'))) 
         return redirect(url_for('download_file', filename='micropheno_output_text.docx'))
-    else: 
+    elif form.is_submitted(): 
         flash('Upload Unsuccessful. Please confirm that you are attempting to upload a text file of type .docx', 'danger')
+
     return render_template('appone.html', form=form)
 
 @app.route('/uploads/<filename>')
